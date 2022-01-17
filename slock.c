@@ -369,6 +369,7 @@ static struct lock *
 lockscreen(Display *dpy, struct xrandr *rr, int screen)
 {
 	char curs[] = {0, 0, 0, 0, 0, 0, 0, 0};
+    XClassHint *hint;
 	int i, ptgrab, kbgrab;
 	struct lock *lock;
 	XColor color, dummy;
@@ -393,10 +394,16 @@ lockscreen(Display *dpy, struct xrandr *rr, int screen)
 	lock->win = XCreateWindow(dpy, lock->root, 0, 0,
 	                          DisplayWidth(dpy, lock->screen),
 	                          DisplayHeight(dpy, lock->screen),
-	                          0, DefaultDepth(dpy, lock->screen),
-	                          CopyFromParent,
-	                          DefaultVisual(dpy, lock->screen),
-	                          CWOverrideRedirect | CWBackPixel, &wa);
+							  0, DefaultDepth(dpy, lock->screen),
+                              CopyFromParent,
+							  DefaultVisual(dpy, lock->screen),
+                              CWOverrideRedirect | CWBackPixel, &wa);
+
+	hint = XAllocClassHint();
+	hint->res_name = "slock";
+	hint->res_class = "slock";
+	XSetClassHint(dpy,lock->win,hint);
+
 	lock->pmap = XCreateBitmapFromData(dpy, lock->win, curs, 8, 8);
 	invisible = XCreatePixmapCursor(dpy, lock->pmap, lock->pmap,
 	                                &color, &color, 0, 0);
