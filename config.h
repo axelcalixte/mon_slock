@@ -3,10 +3,10 @@ static const char *user = "nobody";
 static const char *group = "nogroup";
 
 static const char *colorname[NUMCOLS] = {
-    [INIT] = "#1F1F28",   /* after initialization */
-    [INPUT] = "#223249",  /* during input */
-    [FAILED] = "#E46876", /* wrong password */
-    [CAPS] = "#E6C384",   /* CapsLock on */
+    [INIT] = "#191724",   /* after initialization */
+    [INPUT] = "#31748f",  /* during input */
+    [FAILED] = "#eb6f92", /* wrong password */
+    [CAPS] = "#f6c177",   /* CapsLock on */
 };
 
 /*
@@ -20,7 +20,8 @@ ResourcePref resources[] = {
 };
 
 /* lock screen opacity */
-static const float alpha = 0.7;
+static const float alpha = 1.0;
+// static const float alpha = 0.7;
 
 /* treat a cleared input like a wrong password (color) */
 static const int failonclear = 1;
