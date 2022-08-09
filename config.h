@@ -9,16 +9,6 @@ static const char *colorname[NUMCOLS] = {
     [CAPS] = "#f6c177",   /* CapsLock on */
 };
 
-/*
- * Xresources preferences to load at startup
- */
-ResourcePref resources[] = {
-    {"color0", STRING, &colorname[INIT]},
-    {"color4", STRING, &colorname[INPUT]},
-    {"color1", STRING, &colorname[FAILED]},
-    {"color3", STRING, &colorname[CAPS]},
-};
-
 /* lock screen opacity */
 static const float alpha = 1.0;
 // static const float alpha = 0.7;
@@ -36,7 +26,7 @@ static const int timetocancel = 3;
 static const char *message = "Enter password to unlock";
 
 /* text color */
-static const char *text_color = "#DCD7BA";
+static const char *text_color = "#e0def4";
 
 /* text size (must be a valid size) */
 static const char *font_name =
